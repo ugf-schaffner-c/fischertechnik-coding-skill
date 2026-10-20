@@ -1,0 +1,24 @@
+{
+  "_comment": "Block types known to exist in ROBO Pro Coding, keyed by device type (the create_<type> name). 'verified' lists controllers where a real .ft sample contained or loaded the block. For other controllers the mapping is used with a warning. To add a mapping: get a sample .ft with the block, run `rpc.py inspect`, and add the block type here.",
+  "devices": {
+    "magnetic_valve": {"verified": ["rx"], "methods": {
+      "on":  {"block": "output_magnetic_valve_toggle_state", "fields": {"property_name": "on"}},
+      "off": {"block": "output_magnetic_valve_toggle_state", "fields": {"property_name": "off"}}}},
+    "compressor": {"verified": ["rx"], "methods": {
+      "on":  {"block": "output_compressor_toggle_state", "fields": {"property_name": "on"}},
+      "off": {"block": "output_compressor_toggle_state", "fields": {"property_name": "off"}}}},
+    "led": {"verified": ["rx"], "methods": {
+      "on":  {"block": "output_led_toggle_state", "fields": {"property_name": "on"}},
+      "off": {"block": "output_led_toggle_state", "fields": {"property_name": "off"}}}},
+    "unidirectional_motor": {"verified": ["rx"], "methods": {
+      "set_speed": {"block": "unidirectional_motor_set_speed", "value_input": "value", "shadow": "output_number", "shadow_field": "OUTPUT_NUM"}}},
+    "mini_switch": {"verified": ["rx"], "queries": {
+      "is_closed": {"block": "input_mini_switch_if_state", "fields": {"property_name": "closed"}},
+      "is_open":   {"block": "input_mini_switch_if_state", "fields": {"property_name": "open"}}}}
+  },
+  "generic": {
+    "wait": {"block": "util_wait_for", "fields": {"format": "s"}, "value_input": "value", "shadow": "math_number", "shadow_field": "NUM"},
+    "loop_endless": "loop_endless",
+    "start": "start_block"
+  }
+}
